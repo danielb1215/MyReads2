@@ -13,7 +13,9 @@ class WantTo extends Component {
                      <h2 className="bookshelf-title">Want to Read</h2>
                      <div className="bookshelf-books">
                        <ol className="books-grid">
-                       { WantToBooks.map((books) => (  
+                         
+                       { //Here i made a map or the all the books to display all the books with the respective information of each one 
+                         WantToBooks.map((books) => (  
                          <li key={books.id}>
                            <div className="book">
                              <div className="book-top">
@@ -28,8 +30,8 @@ class WantTo extends Component {
                                  </select>
                                </div>
                              </div>
-                             <div className="book-title">To Kill a Mockingbird</div>
-                             <div className="book-authors">Harper Lee</div>
+                             <div className="book-title">{books.title}</div>
+                             <div className="book-authors">{books.authors}</div>
                            </div>
                          </li>   
                        ))}                     

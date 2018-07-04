@@ -3,6 +3,7 @@ import { PropTypes } from 'prop-types'
 import Currently from './categories/Currently.js'
 import WantTo from './categories/WantTo.js'
 import Read from './categories/Read.js'
+import { Link } from 'react-router-dom'
 
 class BooksCategories extends Component {
   static propTypes = {
@@ -30,7 +31,7 @@ class BooksCategories extends Component {
               </div>
             </div>
             <div className="open-search">
-              <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
+              <Link to='/search'>Add a book </Link>
             </div>
           </div>
         )}

@@ -6,8 +6,7 @@ import { BrowserRouter, Route } from 'react-router-dom' //I install the react-ro
 import BooksCategories from './BooksCategories.js' 
 import SearchPage from './SearchPage.js' 
 
-class BooksApp extends Component {
-   
+class BooksApp extends Component {   
   state = {
     //Here I store the books array in 'books' after the call of the function storeBooks
     books: [],
@@ -30,20 +29,27 @@ class BooksApp extends Component {
       this.bringBooks()  
     })
   }
-
   render() {
     return (
       <div>        
         {console.log(this.state.books)}
-        <BrowserRouter>
+       
+        <BrowserRouter>       
+        <div>
          <Route  exact path='/' render={() => (
            //here I'm calling the component BooksCategories and sending the props "booksArray"
            <BooksCategories booksArray={this.state.books}  onChange={this.updateBooks} />
-         )}
-         
+         )}        
          />
-        
+         <Route exact path='/search' render={() => (
+           //Here im render the Seach page when the url is /seach and when the onChange is call the function updatebooks run
+          <SearchPage onChange={this.updateBooks}/>
+         )}
+          
+         />
+         </div>    
          </BrowserRouter>
+         
       </div>
     )
   }
