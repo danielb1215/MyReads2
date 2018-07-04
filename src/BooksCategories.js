@@ -13,7 +13,6 @@ class BooksCategories extends Component {
   }
  
   render(){
-    const books = this.props.booksArray
     return(
         <div className="app">
           <div className="list-books">

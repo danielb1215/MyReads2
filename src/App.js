@@ -27,6 +27,7 @@ class BooksApp extends Component {
    updateBooks = (book, shelf) =>{
     BooksAPI.update(book,shelf).then(() => {    
       this.bringBooks()  
+      alert("The book: " + book.title + " has been moved into " + shelf )
     })
   }
   render() {
@@ -42,7 +43,7 @@ class BooksApp extends Component {
          )}        
          />
          <Route exact path='/search' render={() => (
-           //Here im render the Seach page when the url is /seach and when the onChange is call the function updatebooks run
+           //Here im render the Seach page when the url is /seach and when the onChange is call the function updatebooks run 
           <SearchPage onChange={this.updateBooks}/>
          )}
           

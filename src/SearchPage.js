@@ -27,6 +27,7 @@ updateQuery = (query) => {
       }
     }) 
   }else {
+    //if the query is emply or less than 0 the values are 0 again
     this.setState({books: [], query: ''})
   }
  
