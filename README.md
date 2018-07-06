@@ -1,92 +1,94 @@
-# MyReads Project
+﻿# MyReads2 Project
 
-This is the starter template for the final assessment project for Udacity's React Fundamentals course. The goal of this template is to save you time by providing a static example of the CSS and HTML markup that may be used, but without any of the React code that is needed to complete the project. If you choose to start with this template, your job will be to add interactivity to the app by refactoring the static code in this template.
+In this project you will find 5 files where the project is developed and explain each file what it contains and its usability.
 
-Of course, you are free to start this project from scratch if you wish! Just be sure to use [Create React App](https://github.com/facebookincubator/create-react-app) to bootstrap the project.
+Src /
 
-## TL;DR
+-App.js
 
-To get started developing right away:
+-BooksCategories.js
 
-* install all project dependencies with `npm install`
-* start the development server with `npm start`
+-SearchPage.js
 
-## What You're Getting
-```bash
-├── CONTRIBUTING.md
-├── README.md - This file.
-├── SEARCH_TERMS.md # The whitelisted short collection of available search terms for you to use with your app.
-├── package.json # npm package manager file. It's unlikely that you'll need to modify this.
-├── public
-│   ├── favicon.ico # React Icon, You may change if you wish.
-│   └── index.html # DO NOT MODIFY
-└── src
-    ├── App.css # Styles for your app. Feel free to customize this as you desire.
-    ├── App.js # This is the root of your app. Contains static HTML right now.
-    ├── App.test.js # Used for testing. Provided with Create React App. Testing is encouraged, but not required.
-    ├── BooksAPI.js # A JavaScript API for the provided Udacity backend. Instructions for the methods are below.
-    ├── icons # Helpful images for your app. Use at your discretion.
-    │   ├── add.svg
-    │   ├── arrow-back.svg
-    │   └── arrow-drop-down.svg
-    ├── index.css # Global styles. You probably won't need to change anything here.
-    └── index.js # You should not need to modify this file. It is used for DOM rendering only.
-```
 
-Remember that good React design practice is to create new JS files for each component and use import/require statements to include them where they are needed.
+Src / categories /
 
-## Backend Server
+-Currently.js
 
-To simplify your development process, we've provided a backend server for you to develop against. The provided file [`BooksAPI.js`](src/BooksAPI.js) contains the methods you will need to perform necessary operations on the backend:
+-Read.js
 
-* [`getAll`](#getall)
-* [`update`](#update)
-* [`search`](#search)
+-WantTo.js
 
-### `getAll`
 
-Method Signature:
 
-```js
-getAll()
-```
 
-* Returns a Promise which resolves to a JSON object containing a collection of book objects.
-* This collection represents the books currently in the bookshelves in your app.
 
-### `update`
+1- App.js
 
-Method Signature:
+contains the functions:
 
-```js
-update(book, shelf)
-```
+	-componentDidMount (): the function that calls the BringBooks () function Just the page is reloaded.
 
-* book: `<Object>` containing at minimum an `id` attribute
-* shelf: `<String>` contains one of ["wantToRead", "currentlyReading", "read"]  
-* Returns a Promise which resolves to a JSON object containing the response data of the POST request
+	-bringBooks (): the function is used to call the function getAll () that is in BooksAPI after the getAll () function is invoked the state books is updated with the information that the API brings.
 
-### `search`
+	-updateBooks (): the function requires two parameters (Book, shelf) the book and the category in which it wants to be updated, then make a call to the function update the API and thus be able to update the selected book in the category desired.
 
-Method Signature:
 
-```js
-search(query)
-```
+the <BooksCategories> and <SearchPage> components are called to render and generate the UI to the user.
 
-* query: `<String>`
-* Returns a Promise which resolves to a JSON object containing a collection of a maximum of 20 book objects.
-* These books do not know which shelf they are on. They are raw results only. You'll need to make sure that books have the correct state while on the search page.
 
-## Important
-The backend API uses a fixed set of cached search results and is limited to a particular set of search terms, which can be found in [SEARCH_TERMS.md](SEARCH_TERMS.md). That list of terms are the _only_ terms that will work with the backend, so don't be surprised if your searches for Basket Weaving or Bubble Wrap don't come back with any results.
 
-## Create React App
+2-BooksCategories.js
+-When it is called, the state that is in the App.js file is sent and received in the booksArray properties, and the function to update the book is also sent and received in the onChange property.
 
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app). You can find more information on how to perform common tasks [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
+	-Here are called the components <Currently>, <WantTo>, <Read> since they contain the UI of each category in these components the booksArray and onChange properties are sent.
 
-## Contributing
+	- <Link> is used so that every time it is called update the URL in "/ search"
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
 
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+2.1- WantTo.js
+
+	-the booksArray and Onchange properties of the BooksCategories component are received and saved in the books and onChange properties.
+
+	-a filter is made of the array books so that we can organize the books that are in the category WantToRead and be shown.
+
+	-each time the user makes a change to the shelf, the onChange property is called so that the respective update is made.
+
+
+2.2- Currently.js
+
+	-the booksArray and Onchange properties of the BooksCategories component are received and saved in the books and onChange properties.
+
+	-filter is made of the array books so that we can organize the books that are in the CurrentlyReading category to be shown.
+
+	-each time the user makes a change to the shelf, the onChange property is called so that the respective update is made.
+
+
+2.3- Read.js
+
+	-the booksArray and Onchange properties of the BooksCategories component are received and saved in the books and onChange properties.
+
+	-filter is made of the array books so that we can organize the books that are in the category read and be shown.
+
+	-each time the user makes a change to the shelf, the onChange property is called so that the respective update is made.
+
+
+
+3-SearchPage.js
+
+	-When this component is called, the UpdateBooks function is sent and saved in the onChange property
+-contains the following functions:
+
+	-updateQuery (): this requires a parameter that is the word you want to find this is taken from the input where the search is performed in this function is done:
+
+		1- it is validated that the query parameter is not empty so that we can continue with the process of calling the API
+
+		2- After making the call of the API a validation is made to see that the result of the API is not empty
+
+		3- A filter is made to the result of the API to see that all the books contain an image and do not generate an error, and so only the books that contain an image remain
+
+		4- If all the above is positive, the state books are updated with the result that the API brings.
+
+	-setToNone (): requires the books parameter that the update query function brings and a loop is made to the array books to update the shelf to none according to each book.
+
+-Each time the user changes the shelf of the book, the call is made to the onChange property so that the book is updated in the UI.

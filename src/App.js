@@ -25,16 +25,20 @@ class BooksApp extends Component {
      })       
   }  
    updateBooks = (book, shelf) =>{
+     //this funcion receives two arguments (book,shelf) the entire book info and the shelf that the user selected
+     //then the API function update is called and the book  gets the shelf update also in the UI the book goes to the respective category
     BooksAPI.update(book,shelf).then(() => {    
       this.bringBooks()  
+      //after the book update and alert appears to inform the user that the book has been moved
       alert("The book: " + book.title + " has been moved into " + shelf )
     })
   }
   render() {
     return (
       <div>        
-        {console.log(this.state.books)}
-       
+        {console.log(this.state.books)
+        //Here i used <BrowerRouter> to be able to use Route i used some help from https://reacttraining.com/react-router/web/api/BrowserRouter
+        }       
         <BrowserRouter>       
         <div>
          <Route  exact path='/' render={() => (
