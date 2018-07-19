@@ -36,7 +36,7 @@ class BooksApp extends Component {
   render() {
     return (
       <div>        
-        {console.log(this.state.books)
+        {
         //Here i used <BrowerRouter> to be able to use Route i used some help from https://reacttraining.com/react-router/web/api/BrowserRouter
         }       
         <BrowserRouter>       
@@ -48,7 +48,8 @@ class BooksApp extends Component {
          />
          <Route exact path='/search' render={() => (
            //Here im render the Seach page when the url is /seach and when the onChange is call the function updatebooks run 
-          <SearchPage onChange={this.updateBooks}/>
+           // sending the boos array to make the comparison between the currentBooks and the books returned from the API
+          <SearchPage onChange={this.updateBooks} booksArray={this.state.books}/>
          )}
           
          />
